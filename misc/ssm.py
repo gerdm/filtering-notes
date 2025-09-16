@@ -59,6 +59,7 @@ def step_ssm(state, key, F, H, T, R):
     # Build next state
     theta = F @ theta + T @ noise
     noise = jax.random.normal(key) * jnp.sqrt(R)
+    # noise = jax.random.t(key, df=2.01) * jnp.eye(1)
     
     # Build observation 
     y = H @ theta + noise
